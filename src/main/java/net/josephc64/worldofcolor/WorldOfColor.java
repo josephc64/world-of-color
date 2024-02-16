@@ -1,6 +1,10 @@
 package net.josephc64.worldofcolor;
 
 import com.mojang.logging.LogUtils;
+import net.josephc64.worldofcolor.block.ModBlocks;
+import net.josephc64.worldofcolor.item.ModCreativeModeTabs;
+import net.josephc64.worldofcolor.item.ModItems;
+import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
@@ -17,13 +21,16 @@ import org.slf4j.Logger;
 @Mod(WorldOfColor.MOD_ID)
 public class WorldOfColor
 {
-    // Define mod id in a common place for everything to reference
     public static final String MOD_ID = "worldofcolor";
-    // Directly reference a slf4j logger
     private static final Logger LOGGER = LogUtils.getLogger();
 
     public WorldOfColor() {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
+
+        ModCreativeModeTabs.register(modEventBus);
+
+        ModItems.register(modEventBus);
+        ModBlocks.register(modEventBus);
 
         modEventBus.addListener(this::commonSetup);
 
@@ -35,9 +42,10 @@ public class WorldOfColor
 
     }
 
-    // Add the example block item to the building blocks tab
     private void addCreative(BuildCreativeModeTabContentsEvent event) {
-
+        if(event.getTabKey() == CreativeModeTabs.INGREDIENTS) {
+            event.accept(ModItems.ALPHA_DYE);
+        }
     }
 
     // You can use SubscribeEvent and let the Event Bus discover methods to call
