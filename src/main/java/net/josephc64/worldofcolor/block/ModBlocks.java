@@ -20,7 +20,7 @@ public class ModBlocks {
             DeferredRegister.create(ForgeRegistries.BLOCKS, WorldOfColor.MOD_ID);
 
 
-    public static final RegistryObject<Block> ALPHA_GRASS_BLOCK = registerBlock("alpha-grass-block",
+    public static final RegistryObject<Block> ALPHA_GRASS_BLOCK = registerBlock("alpha_grass_block",
             () -> new Block(BlockBehaviour.Properties.copy(Blocks.GRASS_BLOCK)));
 
 

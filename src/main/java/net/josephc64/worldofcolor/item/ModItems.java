@@ -11,7 +11,7 @@ public class ModItems {
     public static final DeferredRegister<Item> ITEMS =
             DeferredRegister.create(ForgeRegistries.ITEMS, WorldOfColor.MOD_ID);
 
-    public static final RegistryObject<Item> ALPHA_DYE = ITEMS.register("alpha-dye",
+    public static final RegistryObject<Item> ALPHA_DYE = ITEMS.register("alpha_dye",
             () -> new Item(new Item.Properties()));
 
     public static void register(IEventBus eventBus) {
